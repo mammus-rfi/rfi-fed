@@ -1,6 +1,40 @@
-@tailwind base;
-@tailwind components;
+@import 'tailwindcss';
+@import 'tailwindcss/preflight';
+
 @tailwind utilities;
+
+@theme {
+  --color-primary: #31465e;
+  --color-secondary: #233243;
+  --color-terciary: #e0e0e0;
+  --color-button: #2a3c50;
+  --color-success: #94c25b;
+  --color-error: #a3293f;
+  --color-color-text: #e8e6d4;
+}
+
+@layer components {
+  .titlebar-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      background: #5bbec3;
+    }
+  }
+
+  #titlebar-close {
+    &:hover {
+      background: var(--color-error);
+    }
+  }
+}
 
 :root {
   --background: #ffffff;

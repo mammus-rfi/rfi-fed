@@ -3,9 +3,9 @@ name: CI
 on:
   push:
     branches:
-      - "master"
-      - "develop"
-      - "feature/*"
+      - 'master'
+      - 'develop'
+      - 'feature/*'
   workflow_dispatch:
 
 jobs:
@@ -13,13 +13,13 @@ jobs:
     if: github.ref == 'refs/heads/master'
     uses: mammus-rfi/rfi-workflows/.github/workflows/CI.yaml@master
     with:
-      branch: "master"
+      branch: 'master'
 
   ci-develop:
     if: github.ref == 'refs/heads/develop'
     uses: mammus-rfi/rfi-workflows/.github/workflows/CI.yaml@master
     with:
-      branch: "develop"
+      branch: 'develop'
 
   ci-feature:
     if: contains(github.ref, 'refs/heads/feature/')
