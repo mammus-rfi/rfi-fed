@@ -1,7 +1,7 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Kanit } from 'next/font/google';
-import './globals.css';
-import Titlebar from '@/global/Titlebar';
+import { AuthProvider } from '@/components/SessionProvider';
 
 const kanit = Kanit({
 	variable: '--font-kanit',
@@ -28,8 +28,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${kanit.variable} ${inter.variable} antialiased`}>
-				<Titlebar />
-				{children}
+				<AuthProvider>{children}</AuthProvider>
 			</body>
 		</html>
 	);

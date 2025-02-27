@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tailwindcss/preflight';
 
 @tailwind utilities;
 
@@ -14,42 +13,23 @@
 }
 
 @layer components {
-	.titlebar-button {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 30px;
-		height: 30px;
-		user-select: none;
-		-webkit-user-select: none;
+	.login-button {
+		background-color: var(--color-button);
+		width: calc(var(--spacing) * 72);
+		height: calc(var(--spacing) * 16);
+		transition: all;
+		transition-timing-function: var(
+			--tw-ease,
+			var(--default-transition-timing-function)
+				/* cubic-bezier(0.4, 0, 0.2, 1) */
+		);
+		transition-duration: 200ms;
+		font-family: var(--font-inter);
+		font-weight: 800;
 		cursor: pointer;
 
 		&:hover {
-			background: #5bbec3;
+			background-color: var(--color-secondary);
 		}
 	}
-
-	#titlebar-close {
-		&:hover {
-			background: var(--color-error);
-		}
-	}
-}
-
-:root {
-	--background: #ffffff;
-	--foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
-}
-
-body {
-	color: var(--foreground);
-	background: var(--background);
-	font-family: Arial, Helvetica, sans-serif;
 }
