@@ -27,6 +27,7 @@
 		font-family: var(--font-inter);
 		font-weight: 800;
 		cursor: pointer;
+		border-radius: 25px;
 
 		&:hover {
 			background-color: var(--color-secondary);

@@ -8,8 +8,8 @@ const scopes = ['identify'].join(' ');
 export const authOptions: NextAuthOptions = {
 	providers: [
 		DiscordProvider({
-			clientId: CLIENT_ID as string,
-			clientSecret: CLIENT_TOKEN as string,
+			clientId: CLIENT_ID!,
+			clientSecret: CLIENT_TOKEN!,
 			authorization: { params: { scope: scopes } },
 		}),
 	],
@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
 			return token;
 		},
 	},
-	secret: NEXTAUTH_SECRET as string,
+	secret: NEXTAUTH_SECRET,
 };
 
 export const getAuthSession = async () => {
