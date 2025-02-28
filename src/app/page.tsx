@@ -1,9 +1,21 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import D20Logo from '@/assets/D20';
 import { AuthButton } from '@/components/LoginButton';
 
 export default function Home() {
+	const { status } = useSession();
+	const router = useRouter();
+
+	useEffect(() => {
+		if (status === 'authenticated') {
+			router.replace('/dashboard');
+		}
+	}, [status, router]);
+
 	return (
 		<div className='bg-secondary w-screen h-screen'>
 			<main className='flex w-full h-full items-center justify-center'>

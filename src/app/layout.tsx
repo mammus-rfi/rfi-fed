@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${kanit.variable} ${inter.variable} antialiased`}>
+			<body
+				className={`${kanit.variable} ${inter.variable} antialiased text-color-text`}
+			>
 				<AuthProvider>{children}</AuthProvider>
 			</body>
 		</html>

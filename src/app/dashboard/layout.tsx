@@ -7,7 +7,7 @@ export default function DashboardLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className='flex bg-primary'>
+		<div className='flex bg-primary font-[family-name:var(--font-inter)]'>
 			<aside className='bg-secondary p-10 flex flex-col justify-between items-center'>
 				<nav>
 					<div className='bg-terciary flex justify-center p-3 rounded-full w-36 h-36 items-center'>
