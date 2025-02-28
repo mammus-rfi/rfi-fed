@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for rfi-fed on 2025-02-27T19:17:46Z
+# fly.toml app configuration file generated for rollforinitiative on 2025-02-28T01:09:16-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'rfi-fed'
-primary_region = 'iad'
+app = 'rollforinitiative'
+primary_region = 'gru'
 
 [build]
 
@@ -17,7 +17,6 @@ primary_region = 'iad'
   processes = ['app']
 
 [[vm]]
-  memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-  memory_mb = 1024
+  memory_mb = 512
