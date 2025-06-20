@@ -29,5 +29,3 @@
 import './index.css';
 import '.';
 import '@fontsource/kanit';
-
-console.log('👋 This message is being logged by "renderer.js", included via webpack');

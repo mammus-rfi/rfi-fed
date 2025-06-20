@@ -1,8 +1,8 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<SessionContext>()({
 	component: () => (
-		<main className="font-kanit">
+		<main className="font-kanit h-screen text-[#e8e6d4] bg-secondary">
       <Outlet />
     </main>
 	),
