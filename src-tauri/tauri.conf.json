@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "rfi-fed",
+  "version": "0.1.0",
+  "identifier": "com.rfi-fed.app",
+  "build": {
+    "beforeDevCommand": "deno task dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "deno task build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Roll for Initiative",
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; ipc: http://ipc.localhost; connect-src 'self' https://discord.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.discordapp.com; font-src 'self' https://fonts.gstatic.com;"
+    }
+  },
+  "plugins": {
+    "window": {
+      "all": false,
+      "create": true,
+      "center": true,
+      "close": true,
+      "hide": true,
+      "maximize": true,
+      "minimize": true,
+      "requestUserAttention": true,
+      "setAlwaysOnTop": true,
+      "setClosable": true,
+      "setDecorations": true,
+      "setFocus": true,
+      "setFullscreen": true,
+      "setIcon": true,
+      "setMaxSize": true,
+      "setMinSize": true,
+      "setPosition": true,
+      "setResizable": true,
+      "setSize": true,
+      "setSkipTaskbar": true,
+      "setTitle": true,
+      "show": true,
+      "startDragging": true,
+      "unmaximize": true,
+      "unminimize": true
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
