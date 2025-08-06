@@ -1,6 +1,11 @@
 name: 'Build Windows'
 
-on:
+on: 
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
   workflow_dispatch:
 
 jobs:
@@ -19,9 +24,6 @@ jobs:
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-
-      - name: Install frontend dependencies
-        run: deno install
 
       - name: Build frontend
         run: deno task build
