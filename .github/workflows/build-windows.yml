@@ -24,7 +24,8 @@ jobs:
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-
+      - name: Install frontend dependecies
+        run: deno install
       # Cache Rust com Swatinem/rust-cache (mais eficiente)
       - name: Cache Rust
         uses: Swatinem/rust-cache@v2
@@ -53,10 +54,9 @@ jobs:
           key: ${{ runner.os }}-vite-${{ hashFiles('src/**/*', 'deno.json', 'vite.config.ts') }}
           restore-keys: |
             ${{ runner.os }}-vite-
-      - name: Install frontend dependencies
-        run: deno install
-							- name: Cache Deno dependencies
+      - name: Cache Deno dependencies
         run: deno cache src/main.tsx
+
       - name: Prepare release notes
         id: notes
         run: |
