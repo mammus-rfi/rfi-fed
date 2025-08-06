@@ -31,6 +31,16 @@ jobs:
       - name: Build frontend
         run: deno task build
 
+      - name: Prepare release notes
+        id: notes
+        run: |
+          echo "RELEASE_BODY<<EOF" >> $env:GITHUB_OUTPUT
+          Get-Content -Path "CHANGELOG.md" | ForEach-Object {
+            $_ -replace '__VERSION__', '${{ github.ref_name }}' -replace '__DATE__', (Get-Date -Format "yyyy-MM-dd")
+          } >> $env:GITHUB_OUTPUT
+          echo "EOF" >> $env:GITHUB_OUTPUT
+        shell: powershell
+
       - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
         env:
@@ -38,6 +48,6 @@ jobs:
         with:
           tagName: v__VERSION__
           releaseName: 'RFI v__VERSION__'
-          releaseBody: 'Nova versão do RFI. Baixe o instalador abaixo.'
+          releaseBody: ${{ steps.notes.outputs.RELEASE_BODY }}
           releaseDraft: false
           prerelease: false
