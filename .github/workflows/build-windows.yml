@@ -25,12 +25,37 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install frontend dependecies
-        run: deno install
+      # Cache Rust com Swatinem/rust-cache (mais eficiente)
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "src-tauri -> target"
+          cache-on-failure: true
 
-      - name: Build frontend
-        run: deno task build
+      # Cache Deno
+      - name: Cache Deno
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.deno
+            ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('deno.json', 'deno.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-deno-
 
+      # Cache do build do Vite
+      - name: Cache Vite build
+        uses: actions/cache@v3
+        with:
+          path: |
+            dist/
+            .vite/
+          key: ${{ runner.os }}-vite-${{ hashFiles('src/**/*', 'deno.json', 'vite.config.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-vite-
+
+      - name: Cache Deno dependencies
+        run: deno cache src/main.tsx
       - name: Prepare release notes
         id: notes
         run: |
