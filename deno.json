@@ -3,22 +3,51 @@
     "@/": "./src/"
   },
   "lint": {
-    "include": ["src/"],
-    "exclude": ["src/routeTree.gen.ts", "dist/", "node_modules/"],
+    "include": [
+      "src/"
+    ],
+    "exclude": [
+      "src/routeTree.gen.ts",
+      "dist/",
+      "node_modules/"
+    ],
     "rules": {
-      "tags": ["recommended"],
-      "include": ["ban-untagged-todo"],
-      "exclude": ["no-unused-vars"]
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "ban-untagged-todo"
+      ],
+      "exclude": [
+        "no-unused-vars"
+      ]
     }
   },
+  "tasks": {
+    "version": "deno run --allow-read --allow-write scripts/version.ts",
+    "version:bump": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts",
+    "version:patch": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts patch",
+    "version:minor": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts minor",
+    "version:major": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts major",
+    "release:patch": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts patch --commit",
+    "release:minor": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts minor --commit",
+    "release:major": "deno run --allow-read --allow-write --allow-run scripts/version-bump.ts major --commit"
+  },
   "fmt": {
-    "include": ["src/"],
-    "exclude": ["src/routeTree.gen.ts", "dist/", "node_modules/"],
+    "include": [
+      "src/"
+    ],
+    "exclude": [
+      "src/routeTree.gen.ts",
+      "dist/",
+      "node_modules/"
+    ],
     "useTabs": true,
     "lineWidth": 80,
     "indentWidth": 2,
     "semiColons": true,
     "singleQuote": true,
     "proseWrap": "preserve"
-  }
+  },
+  "version": "0.1.9"
 }
